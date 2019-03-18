@@ -154,240 +154,45 @@
           <div class="chart-cake">
             <div class="container">
               <div class="row">
+                <?php 
+                  include 'connect_db.php';
+                  $sql="SELECT * FROM loaisanpham";
+                  $query=mysqli_query($conn,$sql);
+                  while($row=mysqli_fetch_assoc($query)){
+                    $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai='".$row['MaLoai']."'";
+                    $result=mysqli_query($conn,$truyvan);
+                    while($item=mysqli_fetch_assoc($result)){
+
+                ?>
+
                 <div class="col-sm-6">
-                  <img alt="Cake-one" src="assets/images/cake-one-buy.png">
+                  <img alt="Cake-one" src="./hinhbanhngot/<?php echo $item['TenLoai'];?>/<?php echo $item['anh'];?>">
                 </div>
                 <div class="col-sm-6">
                   <div class="tittle-chart-cake">
                     <h1 class="pink-color">
-                      Purple<span class="grey-color"><i>Cake</i></span>
+                      <?php echo $item['TenSP'];?><span class="grey-color"><i><?php echo $item['TenLoai'];?></i></span>
                     </h1>
                   </div>
-                  <ul class="star">
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <span class="grey-color"><i>Required</i></span>
-                    </li>
-                  </ul>
                   <div class="tittle-chart-cake mar-top-10">
                     <h1 class="pink-color">
-                      $40
+                    <?php echo $item['GIaSP'];?> VNĐ
                     </h1>
                   </div>
                   <p class="mar-top-10 mar-btm-20">
-                    Toffee sugar plum halvah liquorice brownie gummies <br>chocolate bar muffin candy canes. Dessert jelly-o <br>tootsie roll jelly sesame snaps icing.
+                  <?php echo $item['ChiTietSP'];?>
                   </p>
                   <form action="chart-page.php" class="btn-inline">
                     <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
                   </form>
-                  <form action="product-details-page.php" class="btn-inline">
+                  <form action="product-details-page.php?ID=<?php echo $item['MaSP'];?>" class="btn-inline">
                     <button class="btn btn-grey-cake">View Details</button>
                   </form>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div class="chart-cake">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-6">
-                  <img alt="Cake-two" src="assets/images/cake-two-buy.png">
-                </div>
-                <div class="col-sm-6">
-                  <div class="tittle-chart-cake">
-                    <h1 class="pink-color">
-                      Green<span class="grey-color"><i>Cake</i></span>
-                    </h1>
-                  </div>
-                  <ul class="star">
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <span class="grey-color"><i>Required</i></span>
-                    </li>
-                  </ul>
-                  <div class="tittle-chart-cake mar-top-10">
-                    <h1 class="pink-color">
-                      $40
-                    </h1>
-                  </div>
-                  <p class="mar-top-10 mar-btm-20">
-                    Toffee sugar plum halvah liquorice brownie gummies <br>chocolate bar muffin candy canes. Dessert jelly-o <br>tootsie roll jelly sesame snaps icing.
-                  </p>
-                  <form action="chart-page.php" class="btn-inline">
-                    <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
-                  </form>
-                  <form action="product-details-page2.php" class="btn-inline">
-                    <button class="btn btn-grey-cake">View Details</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chart-cake">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-6">
-                  <img alt="Cake-three" src="assets/images/cake-three-buy.png">
-                </div>
-                <div class="col-sm-6">
-                  <div class="tittle-chart-cake">
-                    <h1 class="pink-color">
-                      Cream<span class="grey-color"><i>Cake</i></span>
-                    </h1>
-                  </div>
-                  <ul class="star">
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <span class="grey-color"><i>Required</i></span>
-                    </li>
-                  </ul>
-                  <div class="tittle-chart-cake mar-top-10">
-                    <h1 class="pink-color">
-                      $40
-                    </h1>
-                  </div>
-                  <p class="mar-top-10 mar-btm-20">
-                    Toffee sugar plum halvah liquorice brownie gummies <br>chocolate bar muffin candy canes. Dessert jelly-o <br>tootsie roll jelly sesame snaps icing.
-                  </p>
-                  <form action="chart-page.php" class="btn-inline">
-                    <button class="btn btn-pink-cake mar-right-10" type="submit">Add to Chart</button>
-                  </form>
-                  <form action="product-details-page3.php" class="btn-inline">
-                    <button class="btn btn-grey-cake">View Details</button>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="chart-cake">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-6">
-                  <img alt="Cake-Four" src="assets/images/cake-four-buy.png">
-                </div>
-                <div class="col-sm-6">
-                  <div class="tittle-chart-cake">
-                    <h1 class="pink-color">
-                      Yellow<span class="grey-color"><i>Cake</i></span>
-                    </h1>
-                  </div>
-                  <ul class="star">
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-active">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <div class="icon-star-disable">
-                        &nbsp;
-                      </div>
-                    </li>
-                    <li>
-                      <span class="grey-color"><i>Required</i></span>
-                    </li>
-                  </ul>
-                  <div class="tittle-chart-cake mar-top-10">
-                    <h1 class="pink-color">
-                      $40
-                    </h1>
-                  </div>
-                  <p class="mar-top-10 mar-btm-20">
-                    Toffee sugar plum halvah liquorice brownie gummies <br>chocolate bar muffin candy canes. Dessert jelly-o <br>tootsie roll jelly sesame snaps icing.
-                  </p>
-                  <form action="chart-page.php" class="btn-inline">
-                    <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
-                  </form>
-                  <form action="product-details-page4.php" class="btn-inline">
-                    <button class="btn btn-grey-cake">View Details</button>
-                  </form>
-                </div>
+                <?php 
+                }
+              }
+            ?>
               </div>
             </div>
           </div>
@@ -396,73 +201,6 @@
         <div class="green-arrow">
           &nbsp;
         </div>
-        <!-- Start More Cake -->
-        <section class="more-cake text-center">
-          <div class="container">
-            <img alt="Cake-White" class="mar-top-20" src="assets/images/cake-white.png">
-            <p class="mar-top-20 mar-btm-20">
-              You can found&nbsp;<b>See More Product</b>&nbsp;below this.
-            </p>
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="more-product">
-                  <img alt="More-Product" class="img-100" src="assets/images/shop-cake1.jpg">
-                </div>
-                <div class="detail-product">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h1 class="normal-heading green-color">
-                        $40
-                      </h1>
-                    </div>
-                    <div class="col-sm-6">
-                      <b>Green </b><i>Cupcake</i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="more-product">
-                  <img alt="More-Product" class="img-100" src="assets/images/shop-cake2.jpg">
-                </div>
-                <div class="detail-product">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h1 class="normal-heading green-color">
-                        $40
-                      </h1>
-                    </div>
-                    <div class="col-sm-6">
-                      <b>Cream </b><i>Cupcake</i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="more-product">
-                  <img alt="More-Product" class="img-100" src="assets/images/shop-cake3.jpg">
-                </div>
-                <div class="detail-product">
-                  <div class="row">
-                    <div class="col-sm-6">
-                      <h1 class="normal-heading green-color">
-                        $40
-                      </h1>
-                    </div>
-                    <div class="col-sm-6">
-                      <b>Choco </b><i>Cupcake</i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- End More Cake -->
-        <div class="green-arrow">
-          &nbsp;
-        </div>
-        <div class="pad-top-150"></div>
         <!-- Start Footer Cake -->
         <footer>
           <div class="triangle-no-animate">
