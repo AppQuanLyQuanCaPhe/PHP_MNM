@@ -186,7 +186,7 @@
                     <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
                   </form>
                   <form action="#" class="btn-inline">
-                    <button formaction="product-details-page.php?ID=<?php echo $item['MaSP'] ?>" formmethod="post" class="btn btn-grey-cake" >View Details</button>
+                    <button formaction="product-details-page.php?id=<?php echo $item['MaSP'] ?>" formmethod="post" class="btn btn-grey-cake" >View Details</button>
                   </form>
                 </div>
                 <?php 
