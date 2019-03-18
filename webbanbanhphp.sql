@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th3 17, 2019 lúc 06:59 PM
--- Phiên bản máy phục vụ: 10.1.36-MariaDB
--- Phiên bản PHP: 7.1.23
+-- Thời gian đã tạo: Th3 18, 2019 lúc 04:05 PM
+-- Phiên bản máy phục vụ: 10.1.38-MariaDB
+-- Phiên bản PHP: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -43,7 +43,7 @@ CREATE TABLE `chitiethoadon` (
 
 CREATE TABLE `hoadon` (
   `MaHD` int(11) NOT NULL,
-  `NgayLap` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `NgayLap` date NOT NULL,
   `TinhTrang` int(11) NOT NULL DEFAULT '0',
   `MaKH` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
@@ -56,7 +56,7 @@ CREATE TABLE `hoadon` (
 
 CREATE TABLE `loaisanpham` (
   `MaLoai` int(11) NOT NULL,
-  `TenLoai` text COLLATE utf8_vietnamese_ci NOT NULL
+  `TenLoai` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 --
@@ -78,7 +78,7 @@ INSERT INTO `loaisanpham` (`MaLoai`, `TenLoai`) VALUES
 
 CREATE TABLE `sanpham` (
   `MaSP` int(11) NOT NULL,
-  `TenSP` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `TenSP` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
   `GIaSP` double NOT NULL,
   `ChiTietSP` text COLLATE utf8_vietnamese_ci,
   `anh` varchar(100) COLLATE utf8_vietnamese_ci NOT NULL,
@@ -169,8 +169,8 @@ INSERT INTO `taikhoan` (`TenDangNhap`, `MatKhau`) VALUES
 
 CREATE TABLE `taikhoannguoidung` (
   `TenDangNhap` char(20) COLLATE utf8_vietnamese_ci NOT NULL,
-  `MatKhau` text COLLATE utf8_vietnamese_ci NOT NULL,
-  `Email` text COLLATE utf8_vietnamese_ci
+  `MatKhau` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
+  `Email` varchar(50) COLLATE utf8_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -181,9 +181,9 @@ CREATE TABLE `taikhoannguoidung` (
 
 CREATE TABLE `thongtinkh` (
   `MaKH` int(11) NOT NULL,
-  `TenKH` text COLLATE utf8_vietnamese_ci NOT NULL,
-  `DiaChi` text COLLATE utf8_vietnamese_ci NOT NULL,
-  `SDT` text COLLATE utf8_vietnamese_ci NOT NULL,
+  `TenKH` varchar(50) COLLATE utf8_vietnamese_ci NOT NULL,
+  `DiaChi` varchar(200) COLLATE utf8_vietnamese_ci NOT NULL,
+  `SDT` char(10) COLLATE utf8_vietnamese_ci NOT NULL,
   `TenDangNhap` char(20) COLLATE utf8_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_vietnamese_ci;
 
@@ -195,8 +195,7 @@ CREATE TABLE `thongtinkh` (
 -- Chỉ mục cho bảng `chitiethoadon`
 --
 ALTER TABLE `chitiethoadon`
-  ADD KEY `pfk_MaHD` (`MaHD`),
-  ADD KEY `pfk_MaSP` (`MaSP`);
+  ADD PRIMARY KEY (`MaHD`,`MaSP`);
 
 --
 -- Chỉ mục cho bảng `hoadon`
