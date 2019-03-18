@@ -234,7 +234,7 @@
                       <div class="bottom-product-abs blue-dot">
                         <div class="button-cake">
                           <div class="blue-button-cake">
-                            <button class="button-d-cake blue-button-cake">Buy</button>
+                            <a href="./product-details-page.php?id=<?php echo $item['MaSP']; ?>"><button class="button-d-cake pink-button-cake"> CHI TIẾT</button></a>
                           </div>
                         </div>
                       </div>
@@ -268,7 +268,7 @@
                       <div class="bottom-product-abs pink-dot">
                         <div class="button-cake">
                           <div class="blue-button-cake">
-                            <button class="button-d-cake pink-button-cake">Buy</button>
+                            <a href="./product-details-page.php?id=<?php echo $item['MaSP']; ?>"><button class="button-d-cake pink-button-cake"> CHI TIẾT</button></a>
                           </div>
                         </div>
                       </div>
@@ -301,7 +301,7 @@
                       <div class="bottom-product-abs orange-dot">
                         <div class="button-cake">
                           <div class="blue-button-cake">
-                            <button class="button-d-cake orange-button-cake">Buy</button>
+                            <a href="./product-details-page.php?id=<?php echo $item['MaSP']; ?>"><button class="button-d-cake pink-button-cake"> CHI TIẾT</button></a>
                           </div>
                         </div>
                       </div>
@@ -335,7 +335,7 @@
                       <div class="bottom-product-abs blue-dot">
                         <div class="button-cake">
                           <div class="blue-button-cake">
-                            <button class="button-d-cake blue-button-cake">Buy</button>
+                            <a href="./product-details-page.php?id=<?php echo $item['MaSP']; ?>"><button class="button-d-cake pink-button-cake"> CHI TIẾT</button></a>
                           </div>
                         </div>
                       </div>
@@ -368,7 +368,7 @@
                       <div class="bottom-product-abs pink-dot">
                         <div class="button-cake">
                           <div class="blue-button-cake">
-                            <button class="button-d-cake pink-button-cake">Buy</button>
+                            <a href="./product-details-page.php?id=<?php echo $item['MaSP']; ?>"><button class="button-d-cake pink-button-cake"> CHI TIẾT</button></a>
                           </div>
                         </div>
                       </div>
