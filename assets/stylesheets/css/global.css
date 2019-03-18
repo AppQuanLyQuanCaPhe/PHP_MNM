@@ -195,7 +195,7 @@ Table Of Content
   -o-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'latoregular';
+  font-family: 'monospace';
   background-color: #f4f3ef;
   color: #a1a2a6;
 }

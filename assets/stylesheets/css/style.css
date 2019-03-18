@@ -997,13 +997,14 @@ Table Of Content
   height: 200px;
   padding: 20px;
 }
-.wrap-product .top-product.blue-cake {
-  background: url('../../images/cake-blue.png') no-repeat right;
-}
+ .wrap-product .top-product.blue-cake {
+  /* background: url('../../images/cake-blue.png') no-repeat right; */
+/*   background-size: 10px; */
+} 
 .wrap-product .top-product.blue-cake h1,
 .wrap-product .top-product.blue-cake p,
 .wrap-product .top-product.blue-cake span {
-  color: #59d4f0;
+  color: #597cff;
 }
 @media (min-width: 768px) {
   .wrap-product .top-product.blue-cake h1,
@@ -1020,7 +1021,7 @@ Table Of Content
   }
 }
 .wrap-product .top-product.red-cake {
-  background: url('../../images/cake-red.png') no-repeat right;
+ /* background: url('../../images/cake-red.png') no-repeat right;*/
 }
 .wrap-product .top-product.red-cake h1,
 .wrap-product .top-product.red-cake p,
@@ -1042,7 +1043,7 @@ Table Of Content
   }
 }
 .wrap-product .top-product.orange-cake {
-  background: url('../../images/cake-orange.png') no-repeat right;
+  /*background: url('../../images/cake-orange.png') no-repeat right;*/
 }
 .wrap-product .top-product.orange-cake h1,
 .wrap-product .top-product.orange-cake p,
@@ -1067,8 +1068,8 @@ Table Of Content
   letter-spacing: 2px;
 }
 .wrap-product .top-product p {
-  font-family: 'montserratbold';
-  font-size: 24px;
+  font-family: sans-serif;
+  font-size: 30px;
 }
 .wrap-product .top-product span {
   font-size: 18px;
