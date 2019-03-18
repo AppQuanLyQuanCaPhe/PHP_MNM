@@ -1,3 +1,8 @@
+<?php
+  session_start();
+  include'connect_db.php'; 
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
@@ -137,10 +142,10 @@
               </div>
             </div>
             <div class="tittle-sub-top pad-top-150">
-              <div class="container">
-                Home /
+              <a href="index.php"><div class="container">
+                Home</a>
                 <h1>
-                  Details
+                   /Details
                 </h1>
                 <h2>
                   Cake
@@ -151,11 +156,18 @@
           <div class="purple-arrow">
             &nbsp;
           </div>
+          <?php
+              $id= $_GET["id"];
+              $sql = "SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND MaSP='$id'";
+              $rows = mysqli_query($conn,$sql);
+              $item = mysqli_fetch_assoc($rows);                                 
+          ?>
+          <script> console.log(<?= json_encode($sql) ?>);</script>
           <div class="chart-cake">
             <div class="container">
               <div class="row">
                 <div class="col-sm-6">
-                  <img alt="Cake-one" src="assets/images/cake-one-buy.png">
+                  <img alt="Cake-one" src="./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>" style = "width: 275px;">
                 </div>
                 <div class="col-sm-6">
                   <div class="shop-back">
@@ -163,10 +175,10 @@
                   </div>
                   <div class="tittle-chart-cake">
                     <h1 class="pink-color">
-                      Purple<span class="grey-color"><i>Cake</i></span>
+                      <?php echo $item['TenSP']; ?>
                     </h1>
                   </div>
-                  <ul class="star">
+                  <!-- <ul class="star">
                     <li>
                       <div class="icon-star-active">
                         &nbsp;
@@ -195,13 +207,13 @@
                     <li>
                       <span class="grey-color"><i>Required</i></span>
                     </li>
-                  </ul>
+                  </ul> -->
                   <div class="tittle-chart-cake mar-top-10 mar-btm-10">
                     <h1 class="pink-color">
-                      $40
+                      <?php echo $item['GIaSP']; ?>đ
                     </h1>
                   </div>
-                  <div class="row">
+                  <!-- <div class="row">
                     <div class="col-sm-3">
                       <div class="form-group mar-btm-10">
                         <select class="form-control form-control-custom">
@@ -226,10 +238,9 @@
                         </select>
                       </div>
                     </div>
-                  </div>
+                  </div> -->
                   <p class="mar-top-0 mar-btm-20">
-                    Toffee sugar plum halvah liquorice brownie gummies <br>chocolate bar muffin candy canes. Dessert jelly-o <br>tootsie roll jelly sesame snaps icing.
-                  </p>
+                    <?php echo $item['ChiTietSP']; ?>
                   <form action="chart-page.php" class="btn-inline">
                     <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
                   </form>
