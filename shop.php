@@ -162,9 +162,7 @@
                     $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai='".$row['MaLoai']."'";
                     $result=mysqli_query($conn,$truyvan);
                     while($item=mysqli_fetch_assoc($result)){
-
                 ?>
-
                 <div class="col-sm-6">
                   <img alt="Cake-one" src="./hinhbanhngot/<?php echo $item['TenLoai'];?>/<?php echo $item['anh'];?>">
                 </div>
