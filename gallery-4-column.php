@@ -152,7 +152,8 @@
             &nbsp;
           </div>
         </section>
-        <!-- End Header Cake --><!-- Start Gallery -->
+        <!-- End Header Cake -->
+        <!-- Start Gallery -->
         <section class="gallery">
           <h2 class="hide">
             &nbsp;
@@ -162,70 +163,25 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="row gallery-cake">
+                  <?php
+                    include 'connect_db.php';
+
+                    $sql="SELECT sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai";
+                    $query=mysqli_query($conn,$sql);
+                    while($row=mysqli_fetch_assoc($query)){
+
+                  ?>
                     <div class="col-sm-3 mar-btm-20 cupcakes">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-1.jpg">
+                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="./hinhbanhngot/<?php echo $row['TenLoai'];?>/<?php echo $row['anh'];?>">
                         <div class="gal-relative">
                           <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-1.jpg">
+                          <img alt="Gallery-Picture" class="img-100" src="./hinhbanhngot/<?php echo $row['TenLoai'];?>/<?php echo $row['anh'];?>">
                         </div>
                       </a>
                     </div>
-                    <div class="col-sm-3 mar-btm-20 cookies">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-2.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-2.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 icecream">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-3.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-3.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 cupcakes">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-4.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-4.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 cookies">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-5.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-5.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 icecream">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-6.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-6.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 cupcakes">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-7.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-7.jpg">
-                        </div>
-                      </a>
-                    </div>
-                    <div class="col-sm-3 mar-btm-20 cookies">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-8.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute"></div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-8.jpg">
-                        </div>
-                      </a>
-                    </div>
+                    <?php
+                    }
+                  ?>
                   </div>
                 </div>
               </div>

@@ -164,9 +164,6 @@
                 <div class="col-sm-12">
                   <div class="row gallery-cake">
                   <?php
-                    // $ds = DIRECTORY_SEPARATOR;
-                    // $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
-                    // require_once("{$base_dir}{$ds}connect_db.php");
                     include 'connect_db.php';
 
                     $sql="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai";
