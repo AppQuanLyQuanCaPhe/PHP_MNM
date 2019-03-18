@@ -517,10 +517,12 @@
             <div class="container">
               <!-- Column -->
               <div class="col-sm-4">
-                <div class="messes">
-                  <div class="messes-show"></div>
-                  <div class="round-wrap green-option"></div>
-                </div>
+                <a href="./category.php?id=1">
+                  <div class="messes">
+                    <div class="messes-show"></div>
+                    <div class="round-wrap green-option"></div>
+                  </div>
+                </a>
                 <h4 class="green-color">
                   Bread
                 </h4>
@@ -533,10 +535,12 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <div class="messes">
-                  <div class="messes-show"></div>
-                  <div class="round-wrap orange-option"></div>
-                </div>
+                <a href="./category.php?id=2">
+                  <div class="messes">
+                    <div class="messes-show"></div>
+                    <div class="round-wrap orange-option"></div>
+                  </div>
+                </a>
                 <h4 class="orange-color">
                   Choux
                 </h4>
@@ -549,10 +553,12 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <div class="messes">
-                  <div class="messes-show"></div>
-                  <div class="round-wrap blue-option"></div>
-                </div>
+                <a href="./category.php?id=3">
+                  <div class="messes">
+                    <div class="messes-show"></div>
+                    <div class="round-wrap blue-option"></div>
+                  </div>
+                </a>
                 <h4 class="blue-color">
                   Cookie
                 </h4>
@@ -565,10 +571,12 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <div class="messes">
-                  <div class="messes-show"></div>
-                  <div class="round-wrap pink-option"></div>
-                </div>
+                <a href="./category.php?id=4">
+                  <div class="messes">
+                    <div class="messes-show"></div>
+                    <div class="round-wrap pink-option"></div>
+                  </div>
+                </a>
                 <h4 class="pink-color">
                   Cupcake
                 </h4>
@@ -581,10 +589,12 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <div class="messes">
-                  <div class="messes-show"></div>
-                  <div class="round-wrap purple-option"></div>
-                </div>
+                <a href="./category.php?id=5">
+                  <div class="messes">
+                    <div class="messes-show"></div>
+                    <div class="round-wrap purple-option"></div>
+                  </div>
+                </a>
                 <h4 class="purple-color">
                   Donut
                 </h4>
