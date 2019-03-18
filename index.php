@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include'connect_db.php'; 
+?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
@@ -196,29 +200,35 @@
           </div>
         </section> -->
         <!-- End About Cake --><!-- Start Product Cake -->
+
         <section class="product-cake">
           <div class="container">
             <!-- Product Tittle -->
             <div class="product-tittle">
               <img alt="Cake-Purple" src="assets/images/cake-purple.png">
               <h2>
-                Product
+                TOP PRODUCTS
               </h2>
             </div>
             <!-- Product Content -->
             <div class="product-content">
               <div class="row">
                 <!-- Column -->
+                <?php
+                  $rows = mysqli_query($conn,"SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai=1 ORDER BY GIaSP DESC LIMIT 1");
+                  $item = mysqli_fetch_assoc($rows);                                 
+                ?>
                 <div class="col-sm-4">
                   <div class="wrap-product">
-                    <div class="top-product blue-cake">
-                      <h1 class="normal-heading">
-                        $40
+                    <!-- class="top-product blue-cake"  -->
+                    <div class="top-product blue-cake" style="background: url('./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>') no-repeat right; background-size: 360px;">
+                      <!-- <h1 class="normal-heading">
+                        <?php echo $item["GIaSP"]; ?>đ
                       </h1>
                       <p class="mar-top-10 mar-btm-0">
-                        Blue Cake's
-                      </p>
-                      <span>Lorem ipsum set <br>amet.</span>
+                        <?php echo $item['TenSP']; ?>
+                      </p> -->
+                      <!-- <span>Lorem ipsum set <br>amet.</span> -->
                     </div>
                     <div class="bottom-product bottom-blue">
                       <div class="bottom-product-abs blue-dot">
@@ -230,24 +240,29 @@
                       </div>
                       <div class="wrap-bottom-cake">
                         <p>
-                          Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                          <?php echo $item['ChiTietSP']; ?>
                         </p>
                         <div class="blue-line"></div>
                       </div>
                     </div>
                   </div>
                 </div>
+                
                 <!-- Column -->
+                <?php
+                  $rows = mysqli_query($conn,"SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai=2 ORDER BY GIaSP DESC LIMIT 1");
+                  $item = mysqli_fetch_assoc($rows);                                 
+                ?>
                 <div class="col-sm-4">
                   <div class="wrap-product">
-                    <div class="top-product red-cake">
-                      <h1 class="normal-heading">
-                        $30
+                    <div class="top-product red-cake" style="background: url('./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>') no-repeat right; background-size: 360px;">
+                      <!-- <h1 class="normal-heading">
+                        <?php echo $item["GIaSP"]; ?>đ
                       </h1>
                       <p class="mar-top-10 mar-btm-0">
-                        Pink Cake's
-                      </p>
-                      <span>Lorem ipsum set <br>amet.</span>
+                        <?php echo $item['TenSP']; ?>
+                      </p> -->
+                     <!--  <span>Lorem ipsum set <br>amet.</span> -->
                     </div>
                     <div class="bottom-product bottom-red">
                       <div class="bottom-product-abs pink-dot">
@@ -259,7 +274,7 @@
                       </div>
                       <div class="wrap-bottom-cake">
                         <p>
-                          Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                          <?php echo $item['ChiTietSP']; ?>
                         </p>
                         <div class="red-line"></div>
                       </div>
@@ -267,16 +282,20 @@
                   </div>
                 </div>
                 <!-- Column -->
+                <?php
+                  $rows = mysqli_query($conn,"SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai=3 ORDER BY GIaSP DESC LIMIT 1");
+                  $item = mysqli_fetch_assoc($rows);                                 
+                ?>
                 <div class="col-sm-4">
                   <div class="wrap-product">
-                    <div class="top-product orange-cake">
-                      <h1 class="normal-heading">
-                        $30
+                    <div class="top-product orange-cake" style="background: url('./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>') no-repeat right; background-size: 360px;">
+                      <!-- <h1 class="normal-heading">
+                        <?php echo $item["GIaSP"]; ?>đ
                       </h1>
                       <p class="mar-top-10 mar-btm-0">
-                        Orange Cake's
-                      </p>
-                      <span>Lorem ipsum set <br>amet.</span>
+                        <?php echo $item['TenSP']; ?>
+                      </p> -->
+                      <!-- <span>Lorem ipsum set <br>amet.</span> -->
                     </div>
                     <div class="bottom-product bottom-orange">
                       <div class="bottom-product-abs orange-dot">
@@ -288,9 +307,76 @@
                       </div>
                       <div class="wrap-bottom-cake">
                         <p>
-                          Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                          <?php echo $item['ChiTietSP']; ?>
                         </p>
                         <div class="orange-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Column -->
+                <?php
+                  $rows = mysqli_query($conn,"SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai=4 ORDER BY GIaSP DESC LIMIT 1");
+                  $item = mysqli_fetch_assoc($rows);                                 
+                ?>
+                <div class="col-sm-4">
+                  <div class="wrap-product">
+                    <!-- class="top-product blue-cake"  -->
+                    <div class="top-product blue-cake" style="background: url('./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>') no-repeat right; background-size: 360px;">
+                      <!-- <h1 class="normal-heading">
+                        <?php echo $item["GIaSP"]; ?>đ
+                      </h1>
+                      <p class="mar-top-10 mar-btm-0">
+                        <?php echo $item['TenSP']; ?>
+                      </p> -->
+                      <!-- <span>Lorem ipsum set <br>amet.</span> -->
+                    </div>
+                    <div class="bottom-product bottom-blue">
+                      <div class="bottom-product-abs blue-dot">
+                        <div class="button-cake">
+                          <div class="blue-button-cake">
+                            <button class="button-d-cake blue-button-cake">Buy</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="wrap-bottom-cake">
+                        <p>
+                          <?php echo $item['ChiTietSP']; ?>
+                        </p>
+                        <div class="blue-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Column -->
+                <?php
+                  $rows = mysqli_query($conn,"SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai=5 ORDER BY GIaSP DESC LIMIT 1");
+                  $item = mysqli_fetch_assoc($rows);                                 
+                ?>
+                <div class="col-sm-4">
+                  <div class="wrap-product">
+                    <div class="top-product red-cake" style="background: url('./hinhbanhngot/<?php echo $item['TenLoai']; ?>/<?php echo $item['anh']; ?>') no-repeat right; background-size: 360px;">
+                      <!-- <h1 class="normal-heading">
+                        <?php echo $item["GIaSP"]; ?>đ
+                      </h1>
+                      <p class="mar-top-10 mar-btm-0">
+                        <?php echo $item['TenSP']; ?>
+                      </p> -->
+                      <!-- <span>Lorem ipsum set <br>amet.</span> -->
+                    </div>
+                    <div class="bottom-product bottom-red">
+                      <div class="bottom-product-abs pink-dot">
+                        <div class="button-cake">
+                          <div class="blue-button-cake">
+                            <button class="button-d-cake pink-button-cake">Buy</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="wrap-bottom-cake">
+                        <p>
+                          <?php echo $item['ChiTietSP']; ?>
+                        </p>
+                        <div class="red-line"></div>
                       </div>
                     </div>
                   </div>
@@ -298,7 +384,7 @@
                 <!-- Column Tittle -->
                 <div class="col-sm-12">
                   <p class="text-content text-center">
-                    Toffee sugar plum halvah liquorice <b class="purple-color">brownie gummies</b>&nbsp;chocolate bar muffin candy canes.Dessert jelly-o tootsie roll jelly sesame snaps icing.
+                    Sản phẩm của chúng tôi vô cùng <b class="purple-color">thơm ngon và chất lượng</b>&nbsp;được sản xuất với những nguyên liệu tốt nhất.
                   </p>
                 </div>
               </div>
@@ -420,7 +506,7 @@
               <div class="tittle-cake text-center">
                 <img alt="Cake-White" src="assets/images/cake-white.png">
                 <h2>
-                  What We Can
+                  CATEGORY
                 </h2>
               </div>
             </div>
@@ -436,13 +522,13 @@
                   <div class="round-wrap green-option"></div>
                 </div>
                 <h4 class="green-color">
-                  Make Cake
+                  Bread
                 </h4>
                 <div class="line-temp line-green-sm">
                   &nbsp;
                 </div>
                 <p class="text-center mar-top-10">
-                  Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                  Bánh mì nướng với nhiều hương vị khác nhau sẽ khiến bạn thích thú.
                 </p>
               </div>
               <!-- Column -->
@@ -452,13 +538,13 @@
                   <div class="round-wrap orange-option"></div>
                 </div>
                 <h4 class="orange-color">
-                  Make Cake
+                  Choux
                 </h4>
                 <div class="line-temp line-orange-sm">
                   &nbsp;
                 </div>
                 <p class="text-center mar-top-10">
-                  Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                  Bánh su kem ngon ngọt với nhiều hình dáng độc đáo sẽ khiến bạn thích thú.
                 </p>
               </div>
               <!-- Column -->
@@ -468,13 +554,13 @@
                   <div class="round-wrap blue-option"></div>
                 </div>
                 <h4 class="blue-color">
-                  Make Cake
+                  Cookie
                 </h4>
                 <div class="line-temp line-blue-sm">
                   &nbsp;
                 </div>
                 <p class="text-center mar-top-10">
-                  Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                  Bánh quy giòn sẽ khiến bạn thích thú với nhiều kiểu dáng khác nhau.
                 </p>
               </div>
               <!-- Column -->
@@ -484,13 +570,13 @@
                   <div class="round-wrap pink-option"></div>
                 </div>
                 <h4 class="pink-color">
-                  Make Cake
+                  Cupcake
                 </h4>
                 <div class="line-temp line-pink-sm">
                   &nbsp;
                 </div>
                 <p class="text-center mar-top-10">
-                  Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                  Bánh bông lan xốp mềm thơm ngon với nhiều hương vị sẽ khiến bạn thích thú.
                 </p>
               </div>
               <!-- Column -->
@@ -500,17 +586,17 @@
                   <div class="round-wrap purple-option"></div>
                 </div>
                 <h4 class="purple-color">
-                  Make Cake
+                  Donut
                 </h4>
                 <div class="line-temp line-purple-sm">
                   &nbsp;
                 </div>
                 <p class="text-center mar-top-10">
-                  Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                  Bánh vòng ngon ngọt giòn tan với nhiều hương vị độc đáo.
                 </p>
               </div>
               <!-- Column -->
-              <div class="col-sm-4">
+              <!-- <div class="col-sm-4">
                 <div class="messes">
                   <div class="messes-show"></div>
                   <div class="round-wrap dpurple-option"></div>
@@ -524,7 +610,7 @@
                 <p class="text-center mar-top-10">
                   Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
         </section>
@@ -684,9 +770,6 @@
         </section> -->
         <!-- End Pricing Cake --><!-- Start Team Cake -->
         <section class="abouts-cake">
-          <div class="triangle-no-animate">
-            &nbsp;
-          </div>
           <div class="tittle-cake text-center mar-top-20">
             <div class="container">
               <img alt="Cake-Pink" src="assets/images/cake-pink.png">
