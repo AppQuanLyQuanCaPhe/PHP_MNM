@@ -152,7 +152,8 @@
             &nbsp;
           </div>
         </section>
-        <!-- End Header Cake --><!-- Start Gallery -->
+        <!-- End Header Cake -->
+        <!-- Start Gallery -->
         <section class="gallery">
           <h2 class="hide">
             &nbsp;
@@ -162,130 +163,41 @@
               <div class="row">
                 <div class="col-sm-12">
                   <div class="row gallery-cake">
+                  <?php
+                    // $ds = DIRECTORY_SEPARATOR;
+                    // $base_dir = realpath(dirname(__FILE__)  . $ds . '..') . $ds;
+                    // require_once("{$base_dir}{$ds}connect_db.php");
+                    include 'connect_db.php';
+
+                    $sql="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai";
+                    $query=mysqli_query($conn,$sql);
+                    while($row=mysqli_fetch_assoc($query)){
+
+                  ?>
                     <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-1.jpg">
+                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="./hinhbanhngot/<?php echo $row['TenLoai'];?>/<?php echo $row['anh'];?>">
                         <div class="gal-relative">
                           <div class="gal-absolute">
                             &nbsp;
                           </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-1.jpg">
+                          <img alt="Gallery-Picture" class="img-100" src="./hinhbanhngot/<?php echo $row['TenLoai'];?>/<?php echo $row['anh'];?>">
                         </div>
                         <h4>
-                          Cake Brownies Taste
+                          <?php echo $row['TenSP']?>
                         </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
+                      </a><?php echo $row['ChiTietSP']?>
                     </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-2.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-2.jpg">
-                        </div>
-                        <h4>
-                          Cake Cookies Chocolate
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-3.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-3.jpg">
-                        </div>
-                        <h4>
-                          Cake Cream White Taste
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-4.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-4.jpg">
-                        </div>
-                        <h4>
-                          Cake Chocolate Messes
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-5.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-5.jpg">
-                        </div>
-                        <h4>
-                          Cake Red White Taste
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-6.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-6.jpg">
-                        </div>
-                        <h4>
-                          Cake Rainbow Taste
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-7.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-7.jpg">
-                        </div>
-                        <h4>
-                          Cake Chocolate Original
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-8.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-8.jpg">
-                        </div>
-                        <h4>
-                          Cake Variation Colours
-                        </h4>
-                      </a>Cookie apple pie donut gingerbread sweet roll pudding topping marshmallow.
-                    </div>
-                    <div class="col-xs-12 col-sm-4 mar-btm-20">
-                      <a class="fancybox" data-fancybox-group="contentgallerygel" href="assets/images/gel-9.jpg">
-                        <div class="gal-relative">
-                          <div class="gal-absolute">
-                            &nbsp;
-                          </div>
-                          <img alt="Gallery-Picture" class="img-100" src="assets/images/gel-9.jpg">
-                        </div>
-                        <h4>
-                          Cake Candy Bear
-                        </h4>
-                      </a>Cookie apple pie donut gngerbread  sweet roll puddig topping  marshmallow.
-                    </div>
+                    <?php
+                    }
+                  ?>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <!-- End Gallery -->            <!-- Start Footer Cake -->
+        <!-- End Gallery -->            
+        <!-- Start Footer Cake -->
         <footer>
           <div class="triangle-no-animate">
             &nbsp;

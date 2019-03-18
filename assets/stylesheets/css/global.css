@@ -352,7 +352,8 @@ a:hover {
   box-shadow: none;
 }
 .img-100 {
-  width: 100%;
+  width: 250px;
+  height: 250px;
 }
 .top-relative {
   position: relative;
