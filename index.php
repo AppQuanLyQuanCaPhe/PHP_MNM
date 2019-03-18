@@ -181,9 +181,9 @@
           </header>
         </section>
         <!-- End Header Cake --><!-- Start About Cake -->
-        <section class="about-cake">
+        <!-- <section class="about-cake">
           <div class="container">
-            <!-- About Content -->
+            About Content
             <h2 class="hide">
               &nbsp;
             </h2>
@@ -194,7 +194,7 @@
               </p>
             </div>
           </div>
-        </section>
+        </section> -->
         <!-- End About Cake --><!-- Start Product Cake -->
         <section class="product-cake">
           <div class="container">
@@ -306,13 +306,13 @@
           </div>
         </section>
         <!-- End Product Cake --><!-- Start News Cake -->
-        <section class="news-cake">
+        <!-- <section class="news-cake">
           <div class="triangle-no-animate">
             &nbsp;
           </div>
-          <!-- News Content -->
+          News Content
           <div class="new-cake-content mar-top-20">
-            <!-- Tittle News Content -->
+            Tittle News Content
             <div class="tittle-cake text-center">
               <div class="container">
                 <img alt="Cake-White" src="assets/images/cake-white.png">
@@ -321,7 +321,7 @@
                 </h2>
               </div>
             </div>
-            <!-- Content News-->
+            Content News
             <div class="container mar-top-20">
               <div class="row">
                 <div class="col-sm-6 no-pad-right">
@@ -408,10 +408,10 @@
                 </div>
               </div>
             </div>
-            <!-- End Content News-->
+            End Content News
           </div>
-          <!-- End News Content-->
-        </section>
+          End News Content
+        </section> -->
         <!-- End News Cake --><!-- Start Option Cake -->
         <section class="option">
           <!-- Tittle Option -->
@@ -529,11 +529,11 @@
           </div>
         </section>
         <!-- End Option Cake --><!-- Start Pricing Cake -->
-        <section class="pricing-cake">
+        <!-- <section class="pricing-cake">
           <div class="triangle-no-animate">
             &nbsp;
           </div>
-          <!-- Content Pricing Cake -->
+          Content Pricing Cake
           <div class="content-pricing-cake">
             <div class="tittle-cake text-center">
               <div class="container">
@@ -544,7 +544,7 @@
               </div>
             </div>
             <div class="container mar-top-20">
-              <!-- Column -->
+              Column
               <div class="col-sm-3 mar-btm-20">
                 <div class="img-wrap-price">
                   <img alt="Price-Purple" class="img-full-sm" src="assets/images/price-purple.png">
@@ -577,7 +577,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Column -->
+              Column
               <div class="col-sm-3 mar-btm-20">
                 <div class="img-wrap-price">
                   <img alt="Price-Pink" class="img-full-sm" src="assets/images/price-pink.png">
@@ -610,7 +610,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Column -->
+              Column
               <div class="col-sm-3 mar-btm-20">
                 <div class="img-wrap-price">
                   <img alt="Price-Green" class="img-full-sm" src="assets/images/price-green.png">
@@ -643,7 +643,7 @@
                   </div>
                 </div>
               </div>
-              <!-- Column -->
+              Column
               <div class="col-sm-3 mar-btm-20">
                 <div class="img-wrap-price">
                   <img alt="Price-Blue" class="img-full-sm" src="assets/images/price-blue.png">
@@ -681,9 +681,12 @@
           <div class="triangle-top-no-animate">
             &nbsp;
           </div>
-        </section>
+        </section> -->
         <!-- End Pricing Cake --><!-- Start Team Cake -->
         <section class="abouts-cake">
+          <div class="triangle-no-animate">
+            &nbsp;
+          </div>
           <div class="tittle-cake text-center mar-top-20">
             <div class="container">
               <img alt="Cake-Pink" src="assets/images/cake-pink.png">
