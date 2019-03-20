@@ -15,6 +15,9 @@
             header("Location: add_Loai.php?failure");
         $conn->close();
     }
+    if(isset($_POST["btnre"])){
+        header("Location: index.php");
+    }
 ?>
 <?php
     if(isset($_GET["inserted"])){
@@ -23,7 +26,7 @@
 ?>
 <div>
     <form action="add_Loai.php" method="post" enctype="multipart/form-data">
-        <h2>Thêm Loại bánh mới</h2>
+        <h2>Thêm loại bánh mới</h2>
         <div class="row">
             <div class="lbltitle">
                 <lable>Tên loai sản phẩm</lable>
@@ -36,7 +39,11 @@
         <div class="row" style="padding-top: 12px">
             <div class="submit">
                 <input type="submit" name="btnsubmit" value="Thêm loại sản phẩm" />
+                <input type="submit" name="btnre" value="Quay lại" />
             </div> 
         </div>
-    </form>
+        <?php
+            $conn->close();
+        ?>
+    </form>   
 </div>
