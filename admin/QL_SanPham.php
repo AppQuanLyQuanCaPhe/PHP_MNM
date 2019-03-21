@@ -1,42 +1,41 @@
+<?php
+    $conn = new mysqli('localhost','root','','webbanbanhphp') or die ('Kết nối csdl thất bại!');
+    mysqli_set_charset($conn,"utf8");
+?>
+<h2>DANH SÁCH SẢN PHẨM</h2>
 <table class="table table-bordered">
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-            <th scope="col">action</th>
+            <th scope="col">STT</th>
+            <th scope="col">Tên</th>
+            <th scope="col">Giá</th>
+            <th scope="col">Chi tiết</th>
+            <th scope="col">Ảnh</th>
+            <th scope="col">Mã loại</th>
+            <th scope="col">Thao tác</th>
         </tr>
     </thead>
     <tbody>
+        <?php                                
+              $truyvan="SELECT * FROM sanpham ";
+              $result=mysqli_query($conn,$truyvan);
+              while($item=mysqli_fetch_assoc($result)){
+        ?>
         <tr>
-            <th scope="row">1</th>
-            <td><input type="text" value="Mark" class="form-control form-control-sm" disabled></td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row"><?php echo $item['MaSP']; ?></th>
+            <td><?php echo $item['TenSP']; ?></td>
+            <td><?php echo $item['GIaSP']; ?></td>
+            <td><?php echo $item['ChiTietSP']; ?></td>
+            <td><?php echo $item['anh']; ?></td>
+            <td><?php echo $item['MaLoai']; ?></td>
             <td class="text-center">
-                <button class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></button>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button>
+                <a href="edit_product.php?id=<?php echo $item['MaSP']?>"><button class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
+                <a href="delete_product.php?id=<?php echo $item['MaSP']?>"><button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button></a>
             </td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td class="text-center">
-            <button class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></button>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button>
-            </td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-            <td class="text-center">
-                <button class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></button>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button>
-            </td>
-        </tr>
+        <?php 
+        }
+        ?>
     </tbody>
-</table>                    
+    <a href="add_product.php"><button class="btn btn-primary mr-4" style="float: right;"><i class="fas fa-plus-circle"></i></button></a>
+</table>                   
