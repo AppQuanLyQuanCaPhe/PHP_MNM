@@ -31,7 +31,8 @@
         </div>
           	<?php       
           		$id=$_GET["id"] ;
-		        $sql= "SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaSP='$id'";
+                // $sql= "SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaSP='$id'";
+                $sql= "SELECT * FROM sanpham WHERE sanpham.MaSP='$id'";
 		        $query=mysqli_query($conn,$sql);
 		        $item=mysqli_fetch_assoc($query);
         
@@ -67,14 +68,14 @@
 
         <div class="lblinput">
              <select name="MaLoai">
-                <option value="" selected>--Chọn--</option>
+                <!-- <option value="" >--Chọn--</option> -->
                 <?php
                 $cates=mysqli_query($conn,"SELECT * FROM loaisanpham");
 
-                while($item=mysqli_fetch_assoc($cates))
+                while($loai=mysqli_fetch_assoc($cates))
                 {
                 ?>
-                    <option value="<?php echo $item['MaLoai'];?>" selected><?php echo $item['TenLoai'];?></option>
+                    <option value="<?php echo $loai['MaLoai'];?>" <?php if($loai['MaLoai']==$item['MaLoai']) echo "selected";?>><?php echo $loai['TenLoai'];?></option>
                 <?php
                  }
                 ?>
