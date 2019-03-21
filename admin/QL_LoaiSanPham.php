@@ -22,7 +22,7 @@
             <td colspan="3"><input type="text" value="<?php echo $item['TenLoai']; ?>" class="form-control form-control-sm" disabled></td>
             <td class="text-center">
                 <a href="edit_Loai.php?id=<?php echo $item['MaLoai']?>"><button class="btn btn-sm btn-primary"><i class="fas fa-pencil-alt"></i></button></a>
-                <button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button>
+                <a href="delete_Loai.php?id=<?php echo $item['MaLoai']?>"><button class="btn btn-sm btn-danger"><i class="fas fa-minus-circle"></i></button></a>
             </td>
         </tr>
         <?php 
