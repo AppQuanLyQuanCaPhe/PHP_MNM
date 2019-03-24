@@ -50,7 +50,7 @@
                         <a href="index.php">Home</a>
                       </li>
                       <li>
-                        <a href="shop.php">Shop</a>
+                        <a href="shop.php?page=1">Shop</a>
                       </li>
                       <li class="pad-top-0i">
                         <img alt="Logo-Cupcakes" src="assets/images/logo-150.png">
