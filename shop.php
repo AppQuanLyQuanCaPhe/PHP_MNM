@@ -17,6 +17,7 @@
     <link href="assets/javascripts/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css">
     <link href="assets/stylesheets/css/global.css" rel="stylesheet">
     <link href="assets/stylesheets/css/effect2.css" rel="stylesheet" type="text/css">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet prefetch'>
     <script src="assets/javascripts/modernizr.custom.js"></script>
   </head>
   <body class="demo-1">
@@ -63,12 +64,23 @@
               <div class="row">
                 <?php 
                   include 'connect_db.php';
-                  $sql="SELECT * FROM loaisanpham";
-                  $query=mysqli_query($conn,$sql);
-                  while($row=mysqli_fetch_assoc($query)){
-                    $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai='".$row['MaLoai']."'";
-                    $result=mysqli_query($conn,$truyvan);
-                    while($item=mysqli_fetch_assoc($result)){
+                  $page=1;
+                  $limit=10;
+
+                  $arrs_list = mysqli_query($conn,"
+                    select MaSP from sanpham
+                  ");
+                  $total_record = mysqli_num_rows($arrs_list);
+                  
+                  $total_page=ceil($total_record/$limit);                  
+                  if(isset($_GET["page"]))
+                    $page=$_GET["page"];
+                  if($page<1) $page=1; 
+                  if($page>$total_page) $page=$total_page;                                
+                  $start=($page-1)*$limit;
+                  $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai limit $start,$limit";
+                  $result=mysqli_query($conn,$truyvan);
+                  while($item=mysqli_fetch_assoc($result)){
                 ?>
                 <div class="col-sm-6">
                   <img alt="Cake-one" src="./hinhbanhngot/<?php echo $item['TenLoai'];?>/<?php echo $item['anh'];?>">
@@ -96,9 +108,15 @@
                 </div>
                 <?php 
                 }
-              }
             ?>
               </div>
+              <ul class="pagination modal-1">
+                <li><a href="shop.php?page=<?php echo $_GET["page"]-1; ?>" class="prev">&laquo</a></li>
+                <?php for($i=1;$i<=$total_page;$i++){ ?>
+                <li <?php if($page == $i) echo "class='active'"; ?> ><a href="shop.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                <?php } ?>
+                <li><a href="shop.php?page=<?php echo $_GET["page"]+1; ?>" class="next">&raquo;</a></li>
+              </ul>
             </div>
           </div>
         </section>
