@@ -111,11 +111,13 @@
             ?>
               </div>
               <ul class="pagination modal-1">
+                <li><a href="shop.php?page=1">First</a></li>
                 <li><a href="shop.php?page=<?php echo $_GET["page"]-1; ?>" class="prev">&laquo</a></li>
                 <?php for($i=1;$i<=$total_page;$i++){ ?>
                 <li <?php if($page == $i) echo "class='active'"; ?> ><a href="shop.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
                 <?php } ?>
                 <li><a href="shop.php?page=<?php echo $_GET["page"]+1; ?>" class="next">&raquo;</a></li>
+                <li><a href="shop.php?page=<?php echo $total_page;?>">End</a></li>
               </ul>
             </div>
           </div>

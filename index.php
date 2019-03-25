@@ -419,7 +419,7 @@
             <div class="container">
               <!-- Column -->
               <div class="col-sm-4">
-                <a href="./category.php?id=1">
+                <a href="./category.php?id=1&page=1">
                   <div class="messes">
                     <div class="messes-show"></div>
                     <div class="round-wrap green-option"></div>
@@ -437,7 +437,7 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <a href="./category.php?id=2">
+                <a href="./category.php?id=2&page=1">
                   <div class="messes">
                     <div class="messes-show"></div>
                     <div class="round-wrap orange-option"></div>
@@ -455,7 +455,7 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <a href="./category.php?id=3">
+                <a href="./category.php?id=3&page=1">
                   <div class="messes">
                     <div class="messes-show"></div>
                     <div class="round-wrap blue-option"></div>
@@ -473,7 +473,7 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <a href="./category.php?id=4">
+                <a href="./category.php?id=4&page=1">
                   <div class="messes">
                     <div class="messes-show"></div>
                     <div class="round-wrap pink-option"></div>
@@ -491,7 +491,7 @@
               </div>
               <!-- Column -->
               <div class="col-sm-4">
-                <a href="./category.php?id=5">
+                <a href="./category.php?id=5&page=1">
                   <div class="messes">
                     <div class="messes-show"></div>
                     <div class="round-wrap purple-option"></div>

@@ -16,10 +16,10 @@
         </tr>
     </thead>
     <tbody>
-        <?php                                
-              $truyvan="SELECT * FROM sanpham ";
-              $result=mysqli_query($conn,$truyvan);
-              while($item=mysqli_fetch_assoc($result)){
+        <?php 
+            $truyvan="SELECT * FROM sanpham";
+            $result=mysqli_query($conn,$truyvan);
+            while($item=mysqli_fetch_assoc($result)){
         ?>
         <tr>
             <th scope="row"><?php echo $item['MaSP']; ?></th>

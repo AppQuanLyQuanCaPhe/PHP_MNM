@@ -157,7 +157,23 @@
                 <?php 
                   $id= $_GET["id"];
                   include 'connect_db.php';
-                  $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai='$id'";
+
+                  $page=1;
+                  $limit=4;
+
+                  $arrs_list = mysqli_query($conn,"
+                    select MaSP from sanpham where MaLoai='$id'
+                  ");
+                  $total_record = mysqli_num_rows($arrs_list);
+                  
+                  $total_page=ceil($total_record/$limit);                  
+                  if(isset($_GET["page"]))
+                    $page=$_GET["page"];
+                  if($page<1) $page=1; 
+                  if($page>$total_page) $page=$total_page;                                
+                  $start=($page-1)*$limit;
+
+                  $truyvan="SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND loaisanpham.MaLoai='$id' LIMIT $start,$limit";
                   $result=mysqli_query($conn,$truyvan);
                   while($item=mysqli_fetch_assoc($result)){
 
@@ -191,6 +207,13 @@
                 }              
             ?>
               </div>
+              <ul class="pagination modal-1">
+              <li><a href="category.php?id=<?php echo $id; ?>&page=<?php echo $_GET["page"]-1; ?>" class="prev">&laquo</a></li>
+                <?php for($i=1;$i<=$total_page;$i++){ ?>
+                <li <?php if($page == $i) echo "class='active'"; ?> ><a href="category.php?id=<?php echo $id; ?>&page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                <?php } ?>
+                <li><a href="category.php?id=<?php echo $id; ?>&page=<?php echo $_GET["page"]+1; ?>" class="next">&raquo;</a></li>
+              </ul>
             </div>
           </div>
         </section>
