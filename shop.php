@@ -1,3 +1,24 @@
+<?php
+    session_start();
+    include 'connect_db.php'; 
+    if(!isset($_SESSION["count"])){
+      $_SESSION["count"]=0;
+    }
+    else{
+      $count = $_SESSION["count"];
+    }
+    if(!isset($_SESSION["cart"])){
+      $_SESSION["cart"][]=null;
+    }
+
+    if(isset($_GET["MaSP"])){
+      $_SESSION["count"]=(int)$count+1;
+      $_SESSION["cart"][]=$_GET['MaSP'];
+      unset($_GET['MaSP']);
+    }
+
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
@@ -23,11 +44,11 @@
   <body class="demo-1">
     <div class="ip-container" id="ip-container">
       <!--initial header-->
-      <header class="ip-header">
+      <!-- <header class="ip-header">
         <div class="ip-loader">
           <svg class="ip-inner" height="60px" viewbox="0 0 80 80" width="60px"><path class="ip-loader-circlebg" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z"></path><path class="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" id="ip-loader-circle"></path></svg>
         </div>
-      </header>
+      </header> -->
       <!--main content-->
       <div class="ip-main">
         <div class="top-highlight hide">
@@ -99,9 +120,28 @@
                   <p class="mar-top-10 mar-btm-20">
                   <?php echo $item['ChiTietSP'];?>
                   </p>
-                  <form action="chart-page.php" class="btn-inline">
-                    <button class="btn btn-pink-cake mar-right-10">Add to Chart</button>
-                  </form>
+                  <div class="btn-inline">
+    <button name="click" onclick='location.href="?MaSP=<?php echo "".$item['MaSP'] ?>"' type="submit" data-toggle="modal" data-target="#order" class="btn btn-pink-cake mar-right-10">Mua ngay</button>
+    </div>
+<!-- formaction="chart-page.php?id=<?php echo $item['MaSP'] ?>" formmethod="post" -->
+<div class="modal fade" id="order" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <form action="#" method="post">
+      <div class="modal-content">
+        <div class="modal-header bg-primary">
+          <h4 class="modal-title" style="color:black;"></h4>
+        </div>
+        <div class="modal-body pl-2 pr-2">
+            <p>Bạn đã thêm vào giỏ hàng!</p>
+        </div>
+        <div class="modal-footer">
+            <button onclick="window.location.reload();" data-dismiss="modal" class="btn btn-primary" >Tiếp tục mua hàng</button>
+            <button type="submit" class="btn btn-danger" formaction="chart-page.php" formmethod="post" >đến giỏ hàng</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
                   <form action="#" class="btn-inline">
                     <button formaction="product-details-page.php?id=<?php echo $item['MaSP'] ?>" formmethod="post" class="btn btn-grey-cake" >View Details</button>
                   </form>

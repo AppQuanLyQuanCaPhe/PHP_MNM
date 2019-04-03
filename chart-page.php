@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    include 'connect_db.php'; 
+    if(!isset($_SESSION["count"])){
+      $_SESSION["count"]=0;
+    }
+    if(!isset($_SESSION["cart"])){
+      $_SESSION["cart"][]=null;
+    }
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
   <head>
@@ -17,9 +28,14 @@
     <link href="assets/javascripts/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css">
     <link href="assets/stylesheets/css/global.css" rel="stylesheet">
     <link href="assets/stylesheets/css/effect2.css" rel="stylesheet" type="text/css">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet prefetch'>
     <script src="assets/javascripts/modernizr.custom.js"></script>
   </head>
   <body class="demo-1">
+    <script>
+      console.log(<?= json_encode($_GET["id"]); ?>);    
+    </script>
+
     <div class="ip-container" id="ip-container">
       <!--initial header-->
       <header class="ip-header">
@@ -35,107 +51,9 @@
         <!-- Start Header Cake -->
         <section class="header-wrapper">
           <header class="wrap-header purple-top-dot">
-            <div class="top-absolute">
-              <div class="top-header">
-                <div class="container">
-                  <div class="navbar-header visible-xs">
-                    <button class="navbar-toggle toggle-cake show-menu"><span class="sr-only">Toggle Navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-brand navbar-cake" href="#"><img alt="Logo-White" src="assets/images/logo-100.png"></a>
-                  </div>
-                  <nav>
-                    <ul class="header-nav hidden-xs">
-                      <li>
-                        <a href="index.php">Home</a>
-                      </li>
-                      <li>
-                        <a href="shop.php?page=1">Shop</a>
-                      </li>
-                      <li class="pad-top-0i">
-                        <img alt="Logo-White" src="assets/images/logo-150.png">
-                      </li>
-                      <li>
-                        <a class="show-menu" href="javascript:void(0);">Themes</a>
-                      </li>
-                      <li>
-                        <a href="blog-center.php">Blog</a>
-                      </li>
-                    </ul>
-                  </nav>
-                  <!-- Start Mega Menu Cake -->
-                  <div class="mega-menu hide">
-                    <div class="tittle-mega">
-                      <h4>
-                        - Mega Menu -
-                      </h4>
-                    </div>
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-sm-4">
-                          <ul class="list-mega">
-                            <li class="bottom-red-border">
-                              Blog
-                            </li>
-                            <li>
-                              <a href="blog.php">Blog Left Content</a>
-                            </li>
-                            <li>
-                              <a href="blog-right-content.php">Blog Right Content</a>
-                            </li>
-                            <li>
-                              <a href="blog-center.php">Blog Center</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="col-sm-4">
-                          <ul class="list-mega">
-                            <li class="bottom-red-border">
-                              Gallery
-                            </li>
-                            <li>
-                              <a href="gallery.php">Gallery 3 Column</a>
-                            </li>
-                            <li>
-                              <a href="gallery-4-column.php">Gallery 4 Column</a>
-                            </li>
-                            <li>
-                              <a href="gallery-dot.php">Gallery With Text</a>
-                            </li>
-                          </ul>
-                        </div>
-                        <div class="col-sm-4">
-                          <ul class="list-mega">
-                            <li class="bottom-red-border">
-                              OTHER PAGE
-                            </li>
-                            <li>
-                              <a href="chart-page.php">Chart Page</a>
-                            </li>
-                            <li>
-                              <a href="product-details-page.php">Product Details</a>
-                            </li>
-                            <li>
-                              <a href="privacy-policy.php">Privacy Policy</a>
-                            </li>
-                            <li>
-                              <a href="terms-of-use.php">Terms Of Use</a>
-                            </li>
-                            <li>
-                              <a href="404.php">404</a>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                      <div class="div text-center">
-                        <button class="btn btn-pink-cake mar-top-20 close-menu">Close Themes</button>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- End Mega Menu Cake -->
-                </div>
-              </div>
-              <div class="triangle">
-                &nbsp;
-              </div>
-            </div>
+            <?php 
+              include 'header.php';
+            ?>
             <div class="tittle-sub-top pad-top-150">
               <div class="container">
                 Home /
@@ -157,205 +75,100 @@
                 <thead>
                   <tr>
                     <th>
-                      No
+                      #
                     </th>
                     <th>
-                      Product
+                      Sản phẩm
                     </th>
                     <th>
-                      Description
+                      Mô tả
                     </th>
                     <th>
-                      Date
+                      ngày
                     </th>
                     <th>
-                      Qty
+                      Số lượng
                     </th>
                     <th>
-                      Price
+                      Giá bán
                     </th>
                     <th>
-                      Status
+                      Trạng thái
                     </th>
                   </tr>
                 </thead>
                 <tbody>
+                <?php 
+                    foreach( $_SESSION["cart"] as $key => $value ){
+                      $sql = "SELECT sanpham.MaSP,sanpham.TenSP,sanpham.GIaSP,sanpham.ChiTietSP,sanpham.anh,loaisanpham.TenLoai FROM sanpham, loaisanpham WHERE sanpham.MaLoai=loaisanpham.MaLoai AND sanpham.MaSP = $value";
+                      $rows = mysqli_query($conn,$sql);
+                      if($item=mysqli_fetch_assoc($rows)){
+                            
+                ?>
                   <tr>
+                    <td>
+                      <?php echo "".(int)$key+1 ?>
+                    </td>
+                    <td>
+                      <img alt="Cake-one" class="img-100px" src="./hinhbanhngot/<?php echo $item['TenLoai'];?>/<?php echo $item['anh'];?>">
+                    </td>
+                    <td class="chart-description">
+                      <h4 class="mar-btm-0">
+                        <?php echo "".$item['TenSP']?>
+                      </h4>
+                      <ul class="star normal-heading">
+                        <li>
+                          <div class="icon-star-active">
+                            &nbsp;
+                          </div>
+                        </li>
+                        <li>
+                          <div class="icon-star-active">
+                            &nbsp;
+                          </div>
+                        </li>
+                        <li>
+                          <div class="icon-star-active">
+                            &nbsp;
+                          </div>
+                        </li>
+                        <li>
+                          <div class="icon-star-disable">
+                            &nbsp;
+                          </div>
+                        </li>
+                        <li>
+                          <div class="icon-star-disable">
+                            &nbsp;
+                          </div>
+                        </li>
+                        <li>
+                          <span class="grey-color"><i>Required</i></span>
+                        </li>
+                      </ul>
+                      <p class="mar-top-10 pad-top-10 top-dashed">
+                        <?php echo "".$item['ChiTietSP']; ?>
+                      </p>
+                    </td>
+                    <td>
+                      27 tháng 4 năm 2019
+                    </td>
                     <td>
                       1
                     </td>
                     <td>
-                      <img alt="Cake-one" class="img-100px" src="assets/images/cake-one-buy.png">
-                    </td>
-                    <td class="chart-description">
-                      <h4 class="mar-btm-0">
-                        Purple Cake
-                      </h4>
-                      <ul class="star normal-heading">
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <span class="grey-color"><i>Required</i></span>
-                        </li>
-                      </ul>
-                      <p class="mar-top-10 pad-top-10 top-dashed">
-                        Toffee sugar plum halvah liquorice brownie gummies chocolate bar muffin candy canes. Dessert jelly-o tootsie roll jelly sesame snaps icing.
-                      </p>
-                    </td>
-                    <td>
-                      12 May 2015
-                    </td>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      $40
+                      <?php echo "".$item['GIaSP'];?>
                     </td>
                     <td class="chart-center">
-                      <button class="btn btn-pink-cake mar-right-10">Checkout</button>
+                      <button class="btn btn-primaty mar-right-10">Chưa đặt hàng</button>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      2
-                    </td>
-                    <td>
-                      <img alt="Cake-one" class="img-100px" src="assets/images/cake-two-buy.png">
-                    </td>
-                    <td class="chart-description">
-                      <h4 class="mar-btm-0">
-                        Green Cake
-                      </h4>
-                      <ul class="star normal-heading">
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <span class="grey-color"><i>Required</i></span>
-                        </li>
-                      </ul>
-                      <p class="mar-top-10 pad-top-10 top-dashed">
-                        Toffee sugar plum halvah liquorice brownie gummies chocolate bar muffin candy canes. Dessert jelly-o tootsie roll jelly sesame snaps icing.
-                      </p>
-                    </td>
-                    <td>
-                      12 May 2015
-                    </td>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      $40
-                    </td>
-                    <td class="chart-center">
-                      <button class="btn btn-pink-cake mar-right-10">Checkout</button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      <img alt="Cake-one" class="img-100px" src="assets/images/cake-three-buy.png">
-                    </td>
-                    <td class="chart-description">
-                      <h4 class="mar-btm-0">
-                        Cream Cake
-                      </h4>
-                      <ul class="star normal-heading">
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-active">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <div class="icon-star-disable">
-                            &nbsp;
-                          </div>
-                        </li>
-                        <li>
-                          <span class="grey-color"><i>Required</i></span>
-                        </li>
-                      </ul>
-                      <p class="mar-top-10 pad-top-10 top-dashed">
-                        Toffee sugar plum halvah liquorice brownie gummies chocolate bar muffin candy canes. Dessert jelly-o tootsie roll jelly sesame snaps icing.
-                      </p>
-                    </td>
-                    <td>
-                      12 May 2015
-                    </td>
-                    <td>
-                      3
-                    </td>
-                    <td>
-                      $40
-                    </td>
-                    <td class="chart-center">
-                      <button class="btn btn-pink-cake mar-right-10">Checkout</button>
-                    </td>
-                  </tr>
+                  <?php 
+                    }}
+                  ?>
                 </tbody>
               </table>
+              <button class="btn btn-danger" style="float:right;" name="datmua">Đặt mua</button>
               <div class="visible-xs">
                 <div class="top-cake-table">
                   <div class="top-cake-no">

@@ -1,6 +1,10 @@
 <?php
     session_start();
     include'connect_db.php'; 
+    if(!isset($_SESSION["count"])){
+      $_SESSION["count"]=0;
+    }
+
 ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
@@ -21,6 +25,7 @@
     <link href="assets/javascripts/fancybox/jquery.fancybox.css" rel="stylesheet" type="text/css">
     <link href="assets/stylesheets/css/global.css" rel="stylesheet">
     <link href="assets/stylesheets/css/effect2.css" rel="stylesheet" type="text/css">
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet prefetch'>
     <script src="assets/javascripts/modernizr.custom.js"></script>
   </head>
   <body class="demo-1">
